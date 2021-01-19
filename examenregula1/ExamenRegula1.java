@@ -10,28 +10,37 @@ public class ExamenRegula1 {
         ArrayList<String> lista = new ArrayList<>();
         Scanner leer = new Scanner(System.in);
         String respuesta;
-        int size;
+        int tam;
         boolean parar = false;
-        do {
-            parar = false;
-            System.out.println("--------Longitud del arreglo--------");
-            System.out.println("Ingrese el tamaño del arreglo: ");
-            size = leer.nextInt();
-            String M[] = new String[size];
-            for (int i = 0; i < M.length; i++) {
-                System.out.println("[" + i + "]Ingresa el dato: ");
-                M[i] = leer.next();
-            }
-            for (int i = 0; i < M.length; i++) {
-                lista.add(M[i]);
-            }
-            System.out.println("¿Desea agregar mas elementos? (SI/NO)");
-            respuesta = leer.next();
-            if (respuesta.equalsIgnoreCase("SI")) {
-                parar = true;
-            }
-        } while (parar == true);
-         System.out.println("====== Datos de la lista ======");
+        System.out.println("--------Longitud del arreglo--------");
+        System.out.println("Longitud del arreglo");
+        tam = leer.nextInt();
+        String arreglo[] = new String[tam];
+        for (int i = 0; i < arreglo.length; i++) {
+            System.out.println("Ingresa el dato: ");
+            arreglo[i] = leer.next();
+            lista.add(arreglo[i]);
+        }
+        System.out.println("¿desea agregar mas elementos? (SI/NO)");
+        respuesta = leer.next();
+        if (respuesta.equalsIgnoreCase("SI")) {
+            do {
+                parar = false;
+                for (int i = 0; i < arreglo.length; i++) {
+                    System.out.println("Ingresa el dato: ");
+                    arreglo[i] = leer.next();
+                    lista.add(arreglo[i]);
+                    System.out.println("¿desea agregar mas elementos? (SI/NO)");
+                    respuesta = leer.next();
+                    if (respuesta.equalsIgnoreCase("SI")) {
+                        parar = true;
+                    } else {
+                        parar = false;
+                        break;
+                    }
+                }
+            } while (parar == true);
+        }
         System.out.println(lista.toString());
     }
     
